@@ -21,7 +21,7 @@ def show_data(x, t):
     wk, n = t.shape
     c = [[0, 0, 0], [.5, .5, .5], [1, 1, 1]]
     for i in range(n):
-        plt.plot(x[t[:, i] == 1, 0], x[t[:, 1] == 1, 1], linestyle = 'none', marker='o', markeredgecolor='black', color=c[i], alpha=0.8)
+        plt.plot(x[t[:, i] == 1, 0], x[t[:, i] == 1, 1], linestyle = 'none', marker='o', markeredgecolor='black', color=c[i], alpha=0.8)
     plt.grid(True)
 
 # 乱数の初期化
@@ -50,19 +50,19 @@ plt.figure(1, figsize=(12, 3))
 plt.subplots_adjust(wspace=0.5)
 
 # 学習曲線表示
-plt.subplot(1, 2, 1)
+plt.subplot(1, 3, 1)
 plt.plot(history.history['loss'], 'black', label='training')
 plt.plot(history.history['val_loss'], 'cornflowerblue', label='test')
 plt.legend()
 
 # 精度表示
-#plt.subplot(1, 3, 2)
-#plt.plot(history.history['acc'], 'black', label='training')
-#plt.plot(history.history['val_acc'], 'cornflowerblue', label='test')
-#plt.legend()
+plt.subplot(1, 3, 2)
+plt.plot(history.history['accuracy'], 'black', label='training')
+plt.plot(history.history['val_accuracy'], 'cornflowerblue', label='test')
+plt.legend()
 
 # 境界線表示
-plt.subplot(1, 2, 2)
+plt.subplot(1, 3, 3)
 show_data(X_test, T_test)
 xn = 60
 x0 = np.linspace(X_range0[0], X_range0[1], xn)
