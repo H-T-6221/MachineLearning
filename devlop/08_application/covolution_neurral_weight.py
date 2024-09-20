@@ -114,8 +114,8 @@ for i in range(8):
             img_part = x_img[ih:ih + 3, iw:iw + 3]
             out_img[ih + 1, iw + 1] = np.dot(img_part.reshape(-1), w1.reshape(-1))
     plt.pcolor(-out_img)
-    plt.xlim(0, img_h)
-    plt.ylim(img_w, 0)
+    plt.xlim(0, img_w)
+    plt.ylim(img_h, 0)
     plt.xticks([], "")
     plt.yticks([], "")
 

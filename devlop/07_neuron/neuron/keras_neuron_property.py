@@ -7,7 +7,6 @@ import time
 import keras.optimizers
 from keras.models import Sequential
 from keras.layers import Dense, Activation
-#from keras.optimizers import Adam
 
 outfile = np.load('class_data.npz')
 X_train = outfile['X_train']
@@ -32,9 +31,7 @@ model = Sequential()
 model.add(Dense(2, input_dim=2, activation='sigmoid', kernel_initializer='uniform'))
 model.add(Dense(3, activation='softmax', kernel_initializer='uniform'))
 sgd = keras.optimizers.SGD(learning_rate=0.5, momentum=0.0, decay=0.0, nesterov=False)
-#sgd = Adam(lr=0.5, decay=0.0)
-#model.compile(optimizers=sgd, loss='categorical_crossentropy', metrics=['accuracy'])
-model.compile(loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
 # 学習
 startTime = time.time()
